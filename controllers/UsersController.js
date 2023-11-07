@@ -7,12 +7,12 @@ const Role = require("../models/Rol");
 
 module.exports = {
   async Register(data, res) {
-    const userRole = data.user.role.machine_name;
-    if (userRole !== "admin") {
-      return res
-        .status(401)
-        .send({ error: "No estas autorizado para crear tasks" });
-    }
+    // const userRole = data.user.role.machine_name;
+    // if (userRole !== "admin") {
+    //   return res
+    //     .status(401)
+    //     .send({ error: "No estas autorizado para crear tasks" });
+    // }
     try {
       let checkUserData = await User.findOne({
         where: { email: data.body.email },
@@ -33,7 +33,7 @@ module.exports = {
       } else {
         //encriptacion de contraseña
         const passwordHast = await bcryptjs.hash(data.body.password, 10);
-        User.create({
+        await User.create({
           name: data.body.name,
           email: data.body.email,
           rol_id: data.body.rol_id,
@@ -42,7 +42,7 @@ module.exports = {
           .then((user) =>
           res.status(201).send({
               id: user.id,
-              firstName: user.firstName,
+              name: user.name,
               email: user.email,
             })
           )

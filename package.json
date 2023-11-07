@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "nodemon --inspect server.js",
     "seed": "npx sequelize-cli db:seed:all",
-    "migrations": "npx sequelize-cli db:migrate"
+    "migrations": "npx sequelize-cli db:migrate",
+    "test": "mocha"
   },
   "author": "David Rosas",
   "license": "ISC",
@@ -32,7 +33,11 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "sequelize-cli": "^6.6.0"
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "sequelize-cli": "^6.6.0",
+    "sinon": "^17.0.1",
+    "supertest": "^6.3.3"
   },
   "engines": {
     "npm": ">=7.0.0",

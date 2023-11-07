@@ -5,7 +5,8 @@ const {
     getAllTasks,
     getTaskById,
     updateTask,
-    deleteTask
+    deleteTask,
+    statusTask
 } = require('../controllers/TasksController');
 
 const {
@@ -20,5 +21,7 @@ router.get('/api/tasks', middlewareAuth, validate, getAllTasks);
 router.get('/api/tasks/:taskId', middlewareAuth, validate, getTaskById);
 router.put('/api/tasks/:taskId', middlewareAuth, validate, updateTask);
 router.delete('/api/tasks/:taskId', middlewareAuth, validate, deleteTask);
+
+router.get('/api/status', middlewareAuth, statusTask);
 
 module.exports = router;
